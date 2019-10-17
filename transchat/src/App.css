@@ -19,8 +19,10 @@
 .chat-container {
     width: 75%;
     height: 90%;
+    max-height: 80%;
     background-color: lightskyblue;
     float: right;
+    overflow-y: auto;
 }
 
 .search-bar{
@@ -29,7 +31,7 @@
 }
 
 .list-display{
-    height: 90%;
+    height: 80%;
     background-color: lightgreen;
 }
 

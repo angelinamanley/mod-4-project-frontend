@@ -9,9 +9,19 @@ class ChatContainer extends React.Component {
 	};
 
 	componentDidMount() {
-		API.getMessages(this.props.selectedRoomId).then(messages =>
-			this.setState({ messages: messages }),
-		);
+		return this.props.selectedRoomId
+			? API.getMessages(this.props.selectedRoomId).then(messages =>
+					this.setState({ messages: messages }),
+			  )
+			: null;
+	}
+
+	componentDidUpdate(prevProps) {
+		if (this.props.selectedRoomId !== prevProps.selectedRoomId) {
+			API.getMessages(this.props.selectedRoomId).then(messages =>
+				this.setState({ messages: messages }),
+			);
+		}
 	}
 
 	sendMessage = content => {
@@ -19,22 +29,26 @@ class ChatContainer extends React.Component {
 	};
 
 	sortMessages = () =>
-		this.state.messages.sort(
-			(a, b) =>
-				new Date(a.created_at).getTime() - new Date(b.created_at).getTime(),
-		);
+		!!this.state.messages
+			? this.state.messages.sort(
+					(a, b) =>
+						new Date(a.created_at).getTime() - new Date(b.created_at).getTime(),
+			  )
+			: null;
 
 	render() {
 		const sortedMessages = this.sortMessages();
 		return (
 			<div className="chat-container">
-				{sortedMessages.map(message => (
-					<MessageDisplay
-						{...message}
-						key={message.id}
-						selectedSessionId={this.props.selectedSessionId}
-					/>
-				))}
+				{!!sortedMessages
+					? sortedMessages.map(message => (
+							<MessageDisplay
+								{...message}
+								key={message.id}
+								selectedSessionId={this.props.selectedSessionId}
+							/>
+					  ))
+					: null}
 				<MessageForm sendMessage={this.sendMessage} />
 			</div>
 		);

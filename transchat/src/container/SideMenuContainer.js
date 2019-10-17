@@ -25,6 +25,14 @@ class SideMenuContainer extends React.Component {
 		);
 	}
 
+	componentDidUpdate(prevProps) {
+		if (this.props.currentUserId !== prevProps.currentUserId) {
+			API.getRooms(this.props.currentUserId).then(rooms =>
+				this.setState({ roomsList: rooms.data }),
+			);
+		}
+	}
+
 	changeMenuView = () => {
 		this.setState({ addRoomViewOn: !this.state.addRoomViewOn });
 	};
