@@ -6,7 +6,7 @@ class SideMenuContainer extends React.Component {
 	render() {
 		return (
 			<div className="side-menu-container">
-				SideMenuContainer
+				{/* SideMenuContainer */}
 				<SearchBar />
 				<ListDisplay />
 			</div>

@@ -1,35 +1,42 @@
-.nav-bar{
-    height: 10vh;
+.app {
+    height: 100vh;
     width: 100vw;
+}
+
+.nav-bar{
+    height: 10%;
+    width: 100%;
     background-color: lightgrey;
 }
 
 .side-menu-container {
-    width: 25vw;
-    height: 90vh;
+    width: 25%;
+    height: 90%;
     background-color: lightpink;
     float: left;
 }
 
 .chat-container {
-    width: 75vw;
-    height: 90vh;
+    width: 75%;
+    height: 90%;
     background-color: lightskyblue;
     float: right;
 }
 
 .search-bar{
+    height: 10%;
     background-color: lightyellow;
 }
 
 .list-display{
+    height: 90%;
     background-color: lightgreen;
 }
 
 .message-form {
     position: absolute;
     bottom: 0;
-    height: 5%;
+    height: 10%;
     width: 100%;
     background-color: thistle;
 }
