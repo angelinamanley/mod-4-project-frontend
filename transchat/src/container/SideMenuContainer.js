@@ -3,10 +3,14 @@ import SearchBar from "../components/SearchBar";
 import ListDisplay from "../components/ListDisplay";
 
 class SideMenuContainer extends React.Component {
+	state = {
+		usersList: [],
+		sessionsList: [],
+	};
+
 	render() {
 		return (
 			<div className="side-menu-container">
-				{/* SideMenuContainer */}
 				<SearchBar />
 				<ListDisplay />
 			</div>
