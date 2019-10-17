@@ -10,7 +10,10 @@ const getMessages = roomId =>
 	fetch(`${messagesURL}${roomId}`).then(resp => resp.json());
 
 const getSessions = userId =>
-	fetch(`${sessionsURL}${userId}`).then(resp => resp.json);
+	fetch(`${sessionsURL}${userId}`).then(resp => resp.json());
+
+const getRooms = userId =>
+	fetch(`${roomsURL}${userId}`).then(resp => resp.json());
 
 const postUser = usernameInput => {
 	fetch(usersURL, {
@@ -64,6 +67,7 @@ const API = {
 	postRoom: postRoom,
 	postUser: postUser,
 	postSession: postSession,
+	getRooms: getRooms,
 };
 
 export default API;

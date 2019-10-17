@@ -7,6 +7,11 @@ class ListDisplay extends React.Component {
 			<div className="list-display">
 				ListDisplay
 				<Card />
+				<Card />
+				<Card />
+				<Card />
+				<Card />
+				<Card />
 			</div>
 		);
 	}
