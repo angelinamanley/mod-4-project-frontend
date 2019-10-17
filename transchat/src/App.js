@@ -1,12 +1,23 @@
 import React from 'react';
 import './App.css';
+import API from './adapter/API'
 
-function App() {
+class App extends React.Component {
+
+
+  componentDidMount() {
+    API.getUsers().then(console.log);
+
+  }
+
+  render(){
+
   return (
    <div>
-     {hello}
+     {}
    </div>
   );
+  }
 }
 
 export default App;
