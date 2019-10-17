@@ -1,6 +1,6 @@
 import React from "react";
 
-class Card extends React.Component {
+class RoomCard extends React.Component {
 
    
     findUserName = () => {
@@ -9,8 +9,8 @@ class Card extends React.Component {
     }
 
 	render() {
-		return <div onClick={null} className="card">{this.findUserName()}</div>;
+		return <div onClick={() => this.props.setSelectedSessionAndRoomIds(this.props.room)} className="card">{this.findUserName()}</div>;
 	}
 }
 
-export default Card;
+export default RoomCard;

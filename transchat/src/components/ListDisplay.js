@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "./Card";
+import RoomCard from "./RoomCard";
 
 class ListDisplay extends React.Component {
 
@@ -8,7 +8,7 @@ class ListDisplay extends React.Component {
 		return (
 			<div className="list-display">
 				ListDisplay
-            {this.props.roomsList.map(room => <Card usersList={this.props.usersList} room={room}  />)}
+            {this.props.roomsList.map(room => <RoomCard setSelectedSessionAndRoomIds={this.props.setSelectedSessionAndRoomIds} usersList={this.props.usersList} room={room}  />)}
 
 			
 			</div>
