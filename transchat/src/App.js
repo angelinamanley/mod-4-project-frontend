@@ -8,15 +8,16 @@ import API from "./adapter/API";
 class App extends React.Component {
 	state = {
 		currentUserId: 1,
-		selectedSessionId: "",
+		selectedRoomId: "",
 	};
 
 	componentDidMount() {
 		API.getUsers().then(console.log);
+		API.getMessages(1).then(console.log);
 	}
 
 	setSelectedSessionId = id => {
-		this.setState({ selectedSessionId: id });
+		this.setState({ selectedRoomId: id });
 	};
 
 	render() {
@@ -25,9 +26,9 @@ class App extends React.Component {
 				<NavBar />
 				<SideMenuContainer
 					currentUserId={this.state.currentUserId}
-					setSelectedSessionId={this.setSelectedSessionId}
+					setSelectedRoomId={this.setSelectedRoomId}
 				/>
-				<ChatContainer selectedSessionId={this.state.selectedSessionId} />
+				<ChatContainer selectedRoomId={this.state.selectedRoomId} />
 			</div>
 		);
 	}
