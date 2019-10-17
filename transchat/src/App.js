@@ -1,5 +1,8 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
+import SideMenuContainer from "./container/SideMenuContainer";
+import ChatContainer from "./container/ChatContainer";
+import NavBar from "./components/NavBar";
 import API from './adapter/API'
 
 class App extends React.Component {
@@ -13,9 +16,11 @@ class App extends React.Component {
   render(){
 
   return (
-   <div>
-     {}
-   </div>
+    <div>
+    <NavBar />
+    <SideMenuContainer />
+    <ChatContainer />
+  </div>
   );
   }
 }
