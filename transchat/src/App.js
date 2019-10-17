@@ -6,17 +6,17 @@ import NavBar from "./components/NavBar";
 
 class App extends React.Component {
 	state = {
-		currentUserId: 1,
-		selectedRoomId: 1,
-		selectedSessionId: 1,
+		currentUserId: 6,
+		selectedRoomId: 6,
+		selectedSessionId: 6,
 	};
 
 	setSelectedSessionAndRoomIds = roomObject => {
-		this.setState({
-			selectedSessionId: roomObject.id,
-			selectedRoomId: roomObject.sessions.find(
+		this.setState({ 
+			selectedSessionId: parseInt(roomObject.id),
+			selectedRoomId: parseInt(roomObject.attributes.sessions.find(
 				session => session.user_id === this.state.currentUserId,
-			).id,
+			).id),
 		});
 	};
 
@@ -26,8 +26,7 @@ class App extends React.Component {
 				<NavBar />
 				<SideMenuContainer
 					currentUserId={this.state.currentUserId}
-					setSelectedRoomId={this.setSelectedRoomId}
-					setSelectedSessionId={this.setSelectedSessionId}
+					setSelectedSessionAndRoomIds={this.setSelectedSessionAndRoomIds}
 				/>
 				<ChatContainer
 					selectedSessionId={this.state.selectedSessionId}
