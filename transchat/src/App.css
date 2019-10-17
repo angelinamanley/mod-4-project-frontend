@@ -37,7 +37,7 @@
     position: absolute;
     bottom: 0;
     height: 10%;
-    width: 100%;
+    width: 75%;
     background-color: thistle;
 }
 
@@ -45,19 +45,33 @@
     float: left;
     width: 60%;
     margin: 10px;
-    background-color: lime;
+    background-color: lightsalmon;
 }
 
 .message-display-mine {
     float: right;
     width: 60%;
     margin: 10px;
-    background-color: red;
+    background-color: lightpink;
 }
 
 .card {
     background-color: white;
 }
 
+.input-area {
+    margin: 10px;
+    height: 90%;
+    width: 90%;
+}
 
+.message-content {
+    float: left;
+}
+
+.message-time {
+    float: right;
+    font-size: 50%;
+    color: gray;
+}
 

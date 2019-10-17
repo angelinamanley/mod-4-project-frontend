@@ -14,18 +14,28 @@ class ChatContainer extends React.Component {
 		);
 	}
 
+	sendMessage = content => {
+		API.postMessage(this.props.selectedSessionId, content);
+	};
+
+	sortMessages = () =>
+		this.state.messages.sort(
+			(a, b) =>
+				new Date(a.created_at).getTime() - new Date(b.created_at).getTime(),
+		);
+
 	render() {
+		const sortedMessages = this.sortMessages();
 		return (
 			<div className="chat-container">
-				ChatContainer
-				{this.state.messages.map(message => (
+				{sortedMessages.map(message => (
 					<MessageDisplay
 						{...message}
 						key={message.id}
 						selectedSessionId={this.props.selectedSessionId}
 					/>
 				))}
-				<MessageForm />
+				<MessageForm sendMessage={this.sendMessage} />
 			</div>
 		);
 	}
