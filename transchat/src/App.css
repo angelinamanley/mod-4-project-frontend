@@ -1,0 +1,47 @@
+.nav-bar{
+    height: 10vh;
+    width: 100vw;
+    background-color: lightgrey;
+}
+
+.side-menu-container {
+    width: 25vw;
+    height: 90vh;
+    background-color: lightpink;
+    float: left;
+}
+
+.chat-container {
+    width: 75vw;
+    height: 90vh;
+    background-color: lightskyblue;
+    float: right;
+}
+
+.search-bar{
+    background-color: lightyellow;
+}
+
+.list-display{
+    background-color: lightgreen;
+}
+
+.message-form {
+    position: absolute;
+    bottom: 0;
+    height: 5%;
+    width: 100%;
+    background-color: thistle;
+}
+
+.message-display {
+    margin: 10px;
+    background-color: lime;
+}
+
+.card {
+    background-color: white;
+}
+
+
+
