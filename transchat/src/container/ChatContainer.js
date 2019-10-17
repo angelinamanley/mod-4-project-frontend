@@ -18,12 +18,13 @@ class ChatContainer extends React.Component {
 		return (
 			<div className="chat-container">
 				ChatContainer
-				<MessageDisplay />
-				<MessageDisplay />
-				<MessageDisplay />
-				<MessageDisplay />
-				<MessageDisplay />
-				<MessageDisplay />
+				{this.state.messages.map(message => (
+					<MessageDisplay
+						{...message}
+						key={message.id}
+						selectedSessionId={this.props.selectedSessionId}
+					/>
+				))}
 				<MessageForm />
 			</div>
 		);

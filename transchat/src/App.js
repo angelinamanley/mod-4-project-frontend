@@ -8,10 +8,16 @@ class App extends React.Component {
 	state = {
 		currentUserId: 1,
 		selectedRoomId: 1,
+		selectedSessionId: 1,
 	};
 
-	setSelectedSessionId = id => {
-		this.setState({ selectedRoomId: id });
+	setSelectedSessionAndRoomIds = roomObject => {
+		this.setState({
+			selectedSessionId: roomObject.id,
+			selectedRoomId: roomObject.sessions.find(
+				session => session.user_id === this.state.currentUserId,
+			).id,
+		});
 	};
 
 	render() {
@@ -21,8 +27,12 @@ class App extends React.Component {
 				<SideMenuContainer
 					currentUserId={this.state.currentUserId}
 					setSelectedRoomId={this.setSelectedRoomId}
+					setSelectedSessionId={this.setSelectedSessionId}
 				/>
-				<ChatContainer selectedRoomId={this.state.selectedRoomId} />
+				<ChatContainer
+					selectedSessionId={this.state.selectedSessionId}
+					selectedRoomId={this.state.selectedRoomId}
+				/>
 			</div>
 		);
 	}

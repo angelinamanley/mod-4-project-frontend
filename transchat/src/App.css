@@ -33,7 +33,7 @@
     background-color: lightgreen;
 }
 
-.message-form {
+.message-form-container {
     position: absolute;
     bottom: 0;
     height: 10%;
@@ -42,8 +42,17 @@
 }
 
 .message-display {
+    float: left;
+    width: 60%;
     margin: 10px;
     background-color: lime;
+}
+
+.message-display-mine {
+    float: right;
+    width: 60%;
+    margin: 10px;
+    background-color: red;
 }
 
 .card {
