@@ -6,7 +6,8 @@ import API from "../adapter/API";
 class SideMenuContainer extends React.Component {
 	state = {
 		usersList: [],
-		roomsList: [],
+        roomsList: [],
+        isSearchViewOn: false
 	};
 
 	componentDidMount() {
@@ -21,7 +22,7 @@ class SideMenuContainer extends React.Component {
 		return (
 			<div className="side-menu-container">
 				<SearchBar />
-				<ListDisplay />
+				<ListDisplay usersList={this.state.usersList} roomsList={this.state.roomsList}/>
 			</div>
 		);
 	}
