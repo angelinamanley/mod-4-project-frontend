@@ -86,19 +86,6 @@ class SideMenuContainer extends React.Component {
 					list={list}
 					onCardClick={this.state.addRoomViewOn? this.props.setSelectedSessionAndRoomIds :this.props.createNewRoomAndSessions}
 				/>
-				{/* {this.state.addRoomViewOn ? (
-					<UsersList usersList={this.state.usersList} />
-				) : (
-					<ListDisplay
-						addRoomViewOn={this.addRoomViewOn}
-						setSelectedSessionAndRoomIds={
-							this.props.setSelectedSessionAndRoomIds
-						}
-						usersList={this.state.usersList}
-						roomsList={this.state.roomsList}
-						currentUserId={this.props.currentUserId}
-					/>
-				)} */}
 			</div>
 		);
 	}

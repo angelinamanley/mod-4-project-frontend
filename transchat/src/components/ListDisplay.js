@@ -14,17 +14,6 @@ class ListDisplay extends React.Component {
 						key={item.id}
 					/>
 				))}
-				{/* {this.props.roomsList.map(room => (
-					<RoomCard
-						setSelectedSessionAndRoomIds={
-							this.props.setSelectedSessionAndRoomIds
-						}
-						usersList={this.props.usersList}
-						room={room}
-						key={room.id}
-						currentUserId={this.props.currentUserId}
-					/>
-				))} */}
 			</div>
 		);
 	}
