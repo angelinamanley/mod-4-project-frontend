@@ -2,7 +2,6 @@ import React from "react";
 import SearchBar from "../components/SearchBar";
 import ListDisplay from "../components/ListDisplay";
 import AddRoom from "../components/AddRoom";
-import UsersList from "../components/UsersList";
 
 import API from "../adapter/API";
 
@@ -31,9 +30,21 @@ class SideMenuContainer extends React.Component {
 
 	componentDidUpdate(prevProps) {
 		if (this.props.currentUserId !== prevProps.currentUserId) {
-			API.getRooms(this.props.currentUserId).then(rooms =>
-				this.setState({ roomsList: this.cleanAllRoomsData(rooms.data) }),
-			);
+			API.getUsers()
+				.then(users =>
+					this.setState({
+						usersList: users.filter(
+							user => user.id !== this.props.currentUserId,
+						),
+					}),
+				)
+				.then(
+					API.getRooms(this.props.currentUserId).then(rooms =>
+						this.setState({
+							roomsList: this.cleanAllRoomsData(rooms.data),
+						}),
+					),
+				);
 		}
 	}
 
@@ -85,19 +96,6 @@ class SideMenuContainer extends React.Component {
 					list={list}
 					setSelectedSessionAndRoomIds={this.props.setSelectedSessionAndRoomIds}
 				/>
-				{/* {this.state.addRoomViewOn ? (
-					<UsersList usersList={this.state.usersList} />
-				) : (
-					<ListDisplay
-						addRoomViewOn={this.addRoomViewOn}
-						setSelectedSessionAndRoomIds={
-							this.props.setSelectedSessionAndRoomIds
-						}
-						usersList={this.state.usersList}
-						roomsList={this.state.roomsList}
-						currentUserId={this.props.currentUserId}
-					/>
-				)} */}
 			</div>
 		);
 	}

@@ -19,7 +19,9 @@ class App extends React.Component {
 	};
 
 	changeUser = id => {
-		this.setState({ currentUserId: parseInt(id) });
+		this.setState({
+			currentUserId: parseInt(id),
+		});
 	};
 
 	render() {
