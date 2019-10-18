@@ -10,7 +10,7 @@ class ChatContainer extends React.Component {
 
 	componentDidMount() {
 		return this.props.selectedRoomId
-			? API.getMessages(this.props.selectedRoomId).then(messages =>
+			? API.getMessages(this.props.selectedSessionId).then(messages =>
 					this.setState({ messages: messages }),
 			  )
 			: null;
@@ -18,7 +18,7 @@ class ChatContainer extends React.Component {
 
 	componentDidUpdate(prevProps) {
 		if (this.props.selectedRoomId !== prevProps.selectedRoomId) {
-			API.getMessages(this.props.selectedRoomId).then(messages =>
+			return API.getMessages(this.props.selectedSessionId).then(messages =>
 				this.setState({ messages: messages }),
 			);
 		}

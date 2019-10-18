@@ -63,7 +63,8 @@ class SideMenuContainer extends React.Component {
 
 	changeMenuView = () => {
 		this.setState({ addRoomViewOn: !this.state.addRoomViewOn });
-	};
+    };
+    
 
 	getRoomFriendSession = room =>
 		room.attributes.sessions.find(
@@ -83,7 +84,7 @@ class SideMenuContainer extends React.Component {
 				<SearchBar />
 				<ListDisplay
 					list={list}
-					setSelectedSessionAndRoomIds={this.props.setSelectedSessionAndRoomIds}
+					onCardClick={this.state.addRoomViewOn? this.props.setSelectedSessionAndRoomIds :this.props.createNewRoomAndSessions}
 				/>
 				{/* {this.state.addRoomViewOn ? (
 					<UsersList usersList={this.state.usersList} />

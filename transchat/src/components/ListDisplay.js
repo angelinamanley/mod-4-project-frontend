@@ -7,8 +7,8 @@ class ListDisplay extends React.Component {
 			<div className="list-display">
 				{this.props.list.map(item => (
 					<Card
-						setSelectedSessionAndRoomIds={
-							this.props.setSelectedSessionAndRoomIds
+						onCardClick={
+							this.props.onCardClick
 						}
 						item={item}
 						key={item.id}
