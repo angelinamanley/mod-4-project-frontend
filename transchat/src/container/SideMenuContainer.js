@@ -10,39 +10,82 @@ class SideMenuContainer extends React.Component {
 	state = {
 		usersList: [],
 		roomsList: [],
-		addRoomViewOn: false,
+		addRoomViewOn: true,
 	};
 
 	componentDidMount() {
-		API.getUsers().then(users =>
-			this.setState({
-				usersList: users.filter(user => user.id !== this.props.currentUserId),
-			}),
-		);
-
-		API.getRooms(this.props.currentUserId).then(rooms =>
-			this.setState({ roomsList: rooms.data }),
-		);
+		API.getUsers()
+			.then(users =>
+				this.setState({
+					usersList: users.filter(user => user.id !== this.props.currentUserId),
+				}),
+			)
+			.then(
+				API.getRooms(this.props.currentUserId).then(rooms =>
+					this.setState({
+						roomsList: this.cleanAllRoomsData(rooms.data),
+					}),
+				),
+			);
 	}
 
 	componentDidUpdate(prevProps) {
 		if (this.props.currentUserId !== prevProps.currentUserId) {
 			API.getRooms(this.props.currentUserId).then(rooms =>
-				this.setState({ roomsList: rooms.data }),
+				this.setState({ roomsList: this.cleanAllRoomsData(rooms.data) }),
 			);
 		}
 	}
+
+	cleanAllRoomsData = roomsArray =>
+		roomsArray.map(room => this.cleanRoomData(room));
+
+	cleanRoomData = room => {
+		let cleanRoom = {};
+
+		cleanRoom.id = parseInt(room.id);
+		cleanRoom.mySessionId = room.attributes.sessions.find(
+			session => session.user_id === this.props.currentUserId,
+		).id;
+		cleanRoom.friendUserId = room.attributes.sessions.find(
+			session => session.user_id !== this.props.currentUserId,
+		).user_id;
+		cleanRoom.friendSessionId = room.attributes.sessions.find(
+			session => session.user_id !== this.props.currentUserId,
+		).id;
+		let userId = cleanRoom.friendUserId;
+		cleanRoom.username = this.state.usersList.find(
+			user => user.id === userId,
+		).username;
+
+		return cleanRoom;
+	};
 
 	changeMenuView = () => {
 		this.setState({ addRoomViewOn: !this.state.addRoomViewOn });
 	};
 
+	getRoomFriendSession = room =>
+		room.attributes.sessions.find(
+			session => session.user_id !== this.props.currentUserId,
+		);
+
+	getRoomFriendUserId = room => this.getRoomFriendSession(room).user_id;
+
 	render() {
+		const list = this.state.addRoomViewOn
+			? this.state.roomsList
+			: this.state.usersList;
+
 		return (
 			<div className="side-menu-container">
 				<AddRoom changeMenuView={this.changeMenuView} />
 				<SearchBar />
-				{this.state.addRoomViewOn ? (
+				<ListDisplay
+					list={list}
+					setSelectedSessionAndRoomIds={this.props.setSelectedSessionAndRoomIds}
+				/>
+				{/* {this.state.addRoomViewOn ? (
 					<UsersList usersList={this.state.usersList} />
 				) : (
 					<ListDisplay
@@ -52,8 +95,9 @@ class SideMenuContainer extends React.Component {
 						}
 						usersList={this.state.usersList}
 						roomsList={this.state.roomsList}
+						currentUserId={this.props.currentUserId}
 					/>
-				)}
+				)} */}
 			</div>
 		);
 	}

@@ -11,14 +11,10 @@ class App extends React.Component {
 		selectedSessionId: "",
 	};
 
-	setSelectedSessionAndRoomIds = roomObject => {
+	setSelectedSessionAndRoomIds = (roomId, sessionId) => {
 		this.setState({
-			selectedSessionId: parseInt(roomObject.id),
-			selectedRoomId: parseInt(
-				roomObject.attributes.sessions.find(
-					session => session.user_id === this.state.currentUserId,
-				).id,
-			),
+			selectedSessionId: sessionId,
+			selectedRoomId: roomId,
 		});
 	};
 

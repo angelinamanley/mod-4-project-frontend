@@ -1,12 +1,20 @@
 import React from "react";
-import RoomCard from "./RoomCard";
+import Card from "./Card";
 
 class ListDisplay extends React.Component {
 	render() {
 		return (
 			<div className="list-display">
-				ListDisplay
-				{this.props.roomsList.map(room => (
+				{this.props.list.map(item => (
+					<Card
+						setSelectedSessionAndRoomIds={
+							this.props.setSelectedSessionAndRoomIds
+						}
+						item={item}
+						key={item.id}
+					/>
+				))}
+				{/* {this.props.roomsList.map(room => (
 					<RoomCard
 						setSelectedSessionAndRoomIds={
 							this.props.setSelectedSessionAndRoomIds
@@ -14,8 +22,9 @@ class ListDisplay extends React.Component {
 						usersList={this.props.usersList}
 						room={room}
 						key={room.id}
+						currentUserId={this.props.currentUserId}
 					/>
-				))}
+				))} */}
 			</div>
 		);
 	}
