@@ -29,7 +29,10 @@ class SideMenuContainer extends React.Component {
 	}
 
 	componentDidUpdate(prevProps) {
-		if (this.props.currentUserId !== prevProps.currentUserId) {
+		if (
+			this.props.currentUserId !== prevProps.currentUserId ||
+			this.props.time !== prevProps.time
+		) {
 			API.getUsers()
 				.then(users =>
 					this.setState({
@@ -94,7 +97,11 @@ class SideMenuContainer extends React.Component {
 				<SearchBar />
 				<ListDisplay
 					list={list}
-					setSelectedSessionAndRoomIds={this.props.setSelectedSessionAndRoomIds}
+					onCardClick={
+						this.state.addRoomViewOn
+							? this.props.setSelectedSessionAndRoomIds
+							: this.props.createNewRoomAndSessions
+					}
 				/>
 			</div>
 		);

@@ -10,17 +10,22 @@ class ChatContainer extends React.Component {
 
 	componentDidMount() {
 		return this.props.selectedRoomId
-			? API.getMessages(this.props.selectedRoomId).then(messages =>
+			? API.getMessages(this.props.selectedSessionId).then(messages =>
 					this.setState({ messages: messages }),
 			  )
 			: null;
 	}
 
 	componentDidUpdate(prevProps) {
-		if (this.props.selectedRoomId !== prevProps.selectedRoomId) {
-			API.getMessages(this.props.selectedRoomId).then(messages =>
-				this.setState({ messages: messages }),
-			);
+		if (
+			this.props.selectedRoomId !== prevProps.selectedRoomId ||
+			this.props.time !== prevProps.time
+		) {
+			return this.props.selectedRoomId
+				? API.getMessages(this.props.selectedSessionId).then(messages =>
+						this.setState({ messages: messages }),
+				  )
+				: null;
 		}
 	}
 

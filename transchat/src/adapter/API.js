@@ -27,13 +27,13 @@ const postUser = usernameInput => {
 };
 
 const postSession = (userId, roomId) => {
-	fetch(sessionsURL, {
+	return fetch(sessionsURL, {
 		method: "post",
 		headers: {
 			"Content-Type": "application/json",
 			Accept: "application/json",
 		},
-		body: { user_ID: userId, room_id: roomId },
+		body: JSON.stringify({ user_id: userId, room_id: roomId }),
 	}).then(resp => resp.json());
 };
 
@@ -49,13 +49,8 @@ const postMessage = (sessionId, message) => {
 };
 
 const postRoom = () => {
-	fetch(roomsURL, {
-		method: "post",
-		headers: {
-			"Content-Type": "application/json",
-			Accept: "application/json",
-		},
-		body: {},
+	return fetch(roomsURL, {
+		method: "POST"
 	}).then(resp => resp.json());
 };
 
