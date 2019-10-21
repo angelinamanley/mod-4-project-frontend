@@ -6,7 +6,6 @@ import API from "../adapter/API";
 class ChatContainer extends React.Component {
 	state = {
 		messages: [],
-		translatedMessages: [],
 		language: "en",
 	};
 
@@ -24,8 +23,9 @@ class ChatContainer extends React.Component {
 			this.props.time !== prevProps.time
 		) {
 			return this.props.selectedRoomId
-				? API.getMessages(this.props.selectedSessionId).then(messages =>
-						this.setState({ messages: messages }),
+				? API.getMessages(this.props.selectedSessionId).then(
+						messages => console.log(messages),
+						// this.setState({ messages: messages }),
 				  )
 				: this.setState({ messages: [] });
 		}
@@ -45,7 +45,9 @@ class ChatContainer extends React.Component {
 
 	render() {
 		const sortedMessages = this.props.translation
-			? this.sortMessages(this.state.translatedMessages)
+			? this.sortMessages(
+					this.state.messages.map(message => message.trans_message.content),
+			  )
 			: this.sortMessages(this.state.messages);
 		return (
 			<div className="chat-container">

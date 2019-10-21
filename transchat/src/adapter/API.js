@@ -44,7 +44,11 @@ const postMessage = (sessionId, message, language) => {
 			"Content-Type": "application/json",
 			Accept: "application/json",
 		},
-		body: JSON.stringify({ session_id: sessionId, content: message, lanaguage: language }),
+		body: JSON.stringify({
+			session_id: sessionId,
+			content: message,
+			language: language,
+		}),
 	}).then(resp => resp.json());
 };
 
