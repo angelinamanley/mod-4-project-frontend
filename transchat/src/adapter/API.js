@@ -16,7 +16,7 @@ const getRooms = userId =>
 	fetch(`${roomsURL}${userId}`).then(resp => resp.json());
 
 const postUser = usernameInput => {
-	fetch(usersURL, {
+	return fetch(usersURL, {
 		method: "post",
 		headers: {
 			"Content-Type": "application/json",
@@ -38,7 +38,7 @@ const postSession = (userId, roomId) => {
 };
 
 const postMessage = (sessionId, message) => {
-	fetch(messagesURL, {
+	return fetch(messagesURL, {
 		method: "post",
 		headers: {
 			"Content-Type": "application/json",
@@ -50,7 +50,13 @@ const postMessage = (sessionId, message) => {
 
 const postRoom = () => {
 	return fetch(roomsURL, {
-		method: "POST"
+		method: "POST",
+	}).then(resp => resp.json());
+};
+
+const deleteRoom = roomId => {
+	return fetch(`${roomsURL}${roomId}`, {
+		method: "DELETE",
 	}).then(resp => resp.json());
 };
 
@@ -63,6 +69,7 @@ const API = {
 	postUser: postUser,
 	postSession: postSession,
 	getRooms: getRooms,
+	deleteRoom: deleteRoom,
 };
 
 export default API;

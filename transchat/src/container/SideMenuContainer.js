@@ -86,10 +86,26 @@ class SideMenuContainer extends React.Component {
 
 	getRoomFriendUserId = room => this.getRoomFriendSession(room).user_id;
 
+	getAllUsersWithOpenRoom = () =>
+		this.state.roomsList.map(room => room.friendUserId);
+
+	filterUsersWithoutRoom = () =>
+		this.state.usersList.filter(
+			user => !this.getAllUsersWithOpenRoom().includes(user.id),
+		);
+
+	deleteRoom = roomId => {
+		this.props.setSelectedSessionAndRoomIds("", "");
+		this.setState({
+			roomsList: this.state.roomsList.filter(room => room.id !== roomId),
+		});
+		API.deleteRoom(roomId);
+	};
+
 	render() {
 		const list = this.state.addRoomViewOn
 			? this.state.roomsList
-			: this.state.usersList;
+			: this.filterUsersWithoutRoom();
 
 		return (
 			<div className="side-menu-container">
@@ -102,6 +118,7 @@ class SideMenuContainer extends React.Component {
 							? this.props.setSelectedSessionAndRoomIds
 							: this.props.createNewRoomAndSessions
 					}
+					deleteRoom={this.deleteRoom}
 				/>
 			</div>
 		);

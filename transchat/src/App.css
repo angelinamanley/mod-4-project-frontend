@@ -59,6 +59,10 @@
 
 .card {
     background-color: white;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    border: solid;
 }
 
 .input-area {
@@ -77,3 +81,6 @@
     color: gray;
 }
 
+.username {
+    float:right;
+}

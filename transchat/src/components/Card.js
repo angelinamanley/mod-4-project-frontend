@@ -2,8 +2,21 @@ import React from "react";
 
 const Card = props => {
 	return (
-		<div onClick={() => props.onCardClick(props.item)} className="card">
-			{props.item.username}
+		<div className="card">
+			<div onClick={() => props.onCardClick(props.item)}>
+				{props.item.username}
+			</div>
+			<div>
+				{props.item.friendSessionId ? (
+					<button
+						onClick={() => {
+							props.deleteRoom(props.item.id);
+						}}
+					>
+						X
+					</button>
+				) : null}
+			</div>
 		</div>
 	);
 };

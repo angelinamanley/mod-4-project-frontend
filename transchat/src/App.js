@@ -4,10 +4,11 @@ import SideMenuContainer from "./container/SideMenuContainer";
 import ChatContainer from "./container/ChatContainer";
 import NavBar from "./components/NavBar";
 import API from "./adapter/API";
+import SignInContainer from "./container/SignInContainer";
 
 class App extends React.Component {
 	state = {
-		currentUserId: 6,
+		currentUserId: "",
 		selectedRoomId: "",
 		selectedSessionId: "",
 		time: 0,
@@ -51,24 +52,37 @@ class App extends React.Component {
 		});
 	};
 
+	signIn = event => {
+		event.preventDefault();
+		API.postUser(event.target.username.value).then(user =>
+			this.setState({ currentUserId: user.id, currentUsername: user.username }),
+		);
+	};
+
 	render() {
 		return (
 			<div className="app">
-				<NavBar
-					changeUser={this.changeUser}
-					currentUserId={this.state.currentUserId}
-				/>
-				<SideMenuContainer
-					currentUserId={this.state.currentUserId}
-					createNewRoomAndSessions={this.createNewRoomAndSessions}
-					setSelectedSessionAndRoomIds={this.setSelectedSessionAndRoomIds}
-					time={this.state.time}
-				/>
-				<ChatContainer
-					selectedSessionId={this.state.selectedSessionId}
-					selectedRoomId={this.state.selectedRoomId}
-					time={this.state.time}
-				/>
+				{this.state.currentUserId ? (
+					<>
+						<NavBar
+							changeUser={this.changeUser}
+							currentUserId={this.state.currentUserId}
+						/>
+						<SideMenuContainer
+							currentUserId={this.state.currentUserId}
+							createNewRoomAndSessions={this.createNewRoomAndSessions}
+							setSelectedSessionAndRoomIds={this.setSelectedSessionAndRoomIds}
+							time={this.state.time}
+						/>
+						<ChatContainer
+							selectedSessionId={this.state.selectedSessionId}
+							selectedRoomId={this.state.selectedRoomId}
+							time={this.state.time}
+						/>
+					</>
+				) : (
+					<SignInContainer signIn={this.signIn} />
+				)}
 			</div>
 		);
 	}

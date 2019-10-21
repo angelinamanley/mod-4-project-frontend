@@ -7,11 +7,10 @@ class ListDisplay extends React.Component {
 			<div className="list-display">
 				{this.props.list.map(item => (
 					<Card
-						onCardClick={
-							this.props.onCardClick
-						}
+						onCardClick={this.props.onCardClick}
 						item={item}
 						key={item.id}
+						deleteRoom={this.props.deleteRoom}
 					/>
 				))}
 			</div>
