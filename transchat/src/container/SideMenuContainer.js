@@ -109,8 +109,10 @@ class SideMenuContainer extends React.Component {
 
 		return (
 			<div className="side-menu-container">
-				<AddRoom changeMenuView={this.changeMenuView} />
-				<SearchBar />
+				<AddRoom
+					changeMenuView={this.changeMenuView}
+					addRoomViewOn={this.state.addRoomViewOn}
+				/>
 				<ListDisplay
 					list={list}
 					onCardClick={
