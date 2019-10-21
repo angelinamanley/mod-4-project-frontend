@@ -84,3 +84,32 @@
 .username {
     float:right;
 }
+
+.sign-in{
+    margin: auto;
+    background-color: greenyellow;
+    height: 50vh;
+    width: 50vw;
+}
+
+.header {
+    margin: 10%;
+    text-align: center;
+}
+
+.sign-in-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.username-input {
+    margin: auto;
+    text-align: center;
+    width: 50%;
+}
+
+.sign-in-button {
+    margin: auto;
+    text-align: center;
+    width: 50%;
+}

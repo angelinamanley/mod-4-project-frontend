@@ -55,7 +55,7 @@ class App extends React.Component {
 	signIn = event => {
 		event.preventDefault();
 		API.postUser(event.target.username.value).then(user =>
-			this.setState({ currentUserId: user.id, currentUsername: user.username }),
+			this.setState({ currentUserId: user.id }),
 		);
 	};
 
