@@ -11,6 +11,7 @@ class App extends React.Component {
 		currentUserId: "",
 		selectedRoomId: "",
 		selectedSessionId: "",
+		translation: true,
 		time: 0,
 	};
 
@@ -54,9 +55,15 @@ class App extends React.Component {
 
 	signIn = event => {
 		event.preventDefault();
-		API.postUser(event.target.username.value).then(user =>
-			this.setState({ currentUserId: user.id }),
-		);
+		if (event.target.username.value) {
+			API.postUser(event.target.username.value).then(user =>
+				this.setState({ currentUserId: user.id }),
+			);
+		}
+	};
+
+	switchTranslation = () => {
+		this.setState({ translation: !this.state.translation });
 	};
 
 	render() {
@@ -67,6 +74,7 @@ class App extends React.Component {
 						<NavBar
 							changeUser={this.changeUser}
 							currentUserId={this.state.currentUserId}
+							switchTranslation={this.switchTranslation}
 						/>
 						<SideMenuContainer
 							currentUserId={this.state.currentUserId}
@@ -79,6 +87,7 @@ class App extends React.Component {
 							selectedSessionId={this.state.selectedSessionId}
 							selectedRoomId={this.state.selectedRoomId}
 							time={this.state.time}
+							translation={this.state.translation}
 						/>
 					</>
 				) : (

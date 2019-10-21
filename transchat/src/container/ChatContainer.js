@@ -6,6 +6,7 @@ import API from "../adapter/API";
 class ChatContainer extends React.Component {
 	state = {
 		messages: [],
+		translatedMessages: [],
 	};
 
 	componentDidMount() {
@@ -33,16 +34,18 @@ class ChatContainer extends React.Component {
 		API.postMessage(this.props.selectedSessionId, content);
 	};
 
-	sortMessages = () =>
-		!!this.state.messages
-			? this.state.messages.sort(
+	sortMessages = messages =>
+		!!messages
+			? messages.sort(
 					(a, b) =>
 						new Date(a.created_at).getTime() - new Date(b.created_at).getTime(),
 			  )
 			: null;
 
 	render() {
-		const sortedMessages = this.sortMessages();
+		const sortedMessages = this.props.translation
+			? this.sortMessages(this.state.translatedMessages)
+			: this.sortMessages(this.state.messages);
 		return (
 			<div className="chat-container">
 				{!!sortedMessages

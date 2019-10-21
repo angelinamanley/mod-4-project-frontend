@@ -10,7 +10,12 @@ class NavBar extends React.Component {
 					this.props.changeUser(event.target.userId.value);
 				}}
 			>
-				<span>TRANSCHAT</span>
+				<button
+					className="translate-button"
+					onClick={this.props.switchTranslation}
+				>
+					TRANSCHAT
+				</button>
 				<div className="username">{this.props.currentUserId}</div>
 			</div>
 		);
