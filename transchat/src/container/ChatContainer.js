@@ -7,6 +7,7 @@ class ChatContainer extends React.Component {
 	state = {
 		messages: [],
 		translatedMessages: [],
+		language: "en",
 	};
 
 	componentDidMount() {
@@ -31,7 +32,7 @@ class ChatContainer extends React.Component {
 	}
 
 	sendMessage = content => {
-		API.postMessage(this.props.selectedSessionId, content);
+		API.postMessage(this.props.selectedSessionId, content, this.state.language);
 	};
 
 	sortMessages = messages =>
@@ -57,7 +58,9 @@ class ChatContainer extends React.Component {
 							/>
 					  ))
 					: null}
-				<MessageForm sendMessage={this.sendMessage} />
+				{this.props.selectedRoomId ? (
+					<MessageForm sendMessage={this.sendMessage} />
+				) : null}
 			</div>
 		);
 	}

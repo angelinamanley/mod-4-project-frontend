@@ -1,5 +1,4 @@
 import React from "react";
-import SearchBar from "../components/SearchBar";
 import ListDisplay from "../components/ListDisplay";
 import AddRoom from "../components/AddRoom";
 
