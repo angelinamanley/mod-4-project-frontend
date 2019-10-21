@@ -7,7 +7,7 @@ const Card = props => {
 				{props.item.username}
 			</div>
 			<div>
-				{props.item.friendSessionId ? (
+				{props.item.friendSessionId && props.selected ? (
 					<button
 						onClick={() => {
 							props.deleteRoom(props.item.id);

@@ -73,6 +73,7 @@ class App extends React.Component {
 							createNewRoomAndSessions={this.createNewRoomAndSessions}
 							setSelectedSessionAndRoomIds={this.setSelectedSessionAndRoomIds}
 							time={this.state.time}
+							selectedRoom={this.state.selectedRoomId}
 						/>
 						<ChatContainer
 							selectedSessionId={this.state.selectedSessionId}

@@ -11,6 +11,7 @@ class ListDisplay extends React.Component {
 						item={item}
 						key={item.id}
 						deleteRoom={this.props.deleteRoom}
+						selected={this.props.selectedRoom === item.id}
 					/>
 				))}
 			</div>

@@ -25,7 +25,7 @@ class ChatContainer extends React.Component {
 				? API.getMessages(this.props.selectedSessionId).then(messages =>
 						this.setState({ messages: messages }),
 				  )
-				: null;
+				: this.setState({ messages: [] });
 		}
 	}
 

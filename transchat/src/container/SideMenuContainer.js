@@ -119,6 +119,7 @@ class SideMenuContainer extends React.Component {
 							: this.props.createNewRoomAndSessions
 					}
 					deleteRoom={this.deleteRoom}
+					selectedRoom={this.props.selectedRoom}
 				/>
 			</div>
 		);
