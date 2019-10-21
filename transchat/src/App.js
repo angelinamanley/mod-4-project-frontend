@@ -16,14 +16,13 @@ class App extends React.Component {
 
 	componentDidMount() {
 		let time = this.state.time;
-		this.timeInterval = setInterval(() => {
-			this.setState({ time: ++time });
-		}, 1000);
+		// this.timeInterval = setInterval(() => {
+		// 	this.setState({ time: ++time });
+		// }, 1000);
 	}
 
 	componentWillUnmount() {
-		clearInterval(this.timeInterval);
-	}
+cd 	}
 
 	setSelectedSessionAndRoomIds = item => {
 		this.setState({

@@ -37,14 +37,14 @@ const postSession = (userId, roomId) => {
 	}).then(resp => resp.json());
 };
 
-const postMessage = (sessionId, message) => {
+const postMessage = (sessionId, message, language) => {
 	return fetch(messagesURL, {
 		method: "post",
 		headers: {
 			"Content-Type": "application/json",
 			Accept: "application/json",
 		},
-		body: JSON.stringify({ session_id: sessionId, content: message }),
+		body: JSON.stringify({ session_id: sessionId, content: message, lanaguage: language }),
 	}).then(resp => resp.json());
 };
 

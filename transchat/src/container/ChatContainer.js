@@ -6,6 +6,7 @@ import API from "../adapter/API";
 class ChatContainer extends React.Component {
 	state = {
 		messages: [],
+		language: "es"
 	};
 
 	componentDidMount() {
@@ -30,7 +31,7 @@ class ChatContainer extends React.Component {
 	}
 
 	sendMessage = content => {
-		API.postMessage(this.props.selectedSessionId, content);
+		API.postMessage(this.props.selectedSessionId, content, this.state.language);
 	};
 
 	sortMessages = () =>
