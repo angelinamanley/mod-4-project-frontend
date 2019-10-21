@@ -10,7 +10,7 @@ class NavBar extends React.Component {
 					this.props.changeUser(event.target.userId.value);
 				}}
 			>
-				<h3>TRANSCHAT</h3>
+				<span>TRANSCHAT</span>
 				<div className="username">{this.props.currentUserId}</div>
 			</div>
 		);

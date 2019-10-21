@@ -25,14 +25,16 @@
     overflow-y: auto;
 }
 
-.search-bar{
+.add-room {
     height: 10%;
-    background-color: lightyellow;
+    background-color: khaki;
 }
 
 .list-display{
-    height: 80%;
+    height: 90%;
+    max-height: 90%;
     background-color: lightgreen;
+    overflow-y: auto;
 }
 
 .message-form-container {
@@ -93,7 +95,7 @@
 }
 
 .header {
-    margin: 10%;
+    margin: auto;
     text-align: center;
 }
 
