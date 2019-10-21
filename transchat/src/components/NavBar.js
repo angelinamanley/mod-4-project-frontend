@@ -15,6 +15,7 @@ class NavBar extends React.Component {
 					<input type="number" name="userId" />
 					<button>CHANGE</button>
 				</form>
+				{this.props.currentUserId}
 			</div>
 		);
 	}

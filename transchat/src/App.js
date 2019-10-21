@@ -54,7 +54,10 @@ class App extends React.Component {
 	render() {
 		return (
 			<div className="app">
-				<NavBar changeUser={this.changeUser} />
+				<NavBar
+					changeUser={this.changeUser}
+					currentUserId={this.state.currentUserId}
+				/>
 				<SideMenuContainer
 					currentUserId={this.state.currentUserId}
 					createNewRoomAndSessions={this.createNewRoomAndSessions}
