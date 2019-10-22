@@ -4,7 +4,6 @@ import { Button, Image, List } from "semantic-ui-react";
 const Card = props => {
 	return (
 		<div className="card">
-			{/* <List.Item> */}
 			<div
 				className="card-username"
 				onClick={() => props.onCardClick(props.item)}
@@ -31,7 +30,6 @@ const Card = props => {
 					</Button>
 				</div>
 			) : null}
-			{/* </List.Item> */}
 		</div>
 	);
 };

@@ -28,6 +28,7 @@ class ChatContainer extends React.Component {
 				  )
 				: this.setState({ messages: [] });
 		}
+		// this.scrollToBottom();
 	}
 
 	sendMessage = content => {
@@ -41,6 +42,10 @@ class ChatContainer extends React.Component {
 						new Date(a.created_at).getTime() - new Date(b.created_at).getTime(),
 			  )
 			: null;
+
+	scrollToBottom = () => {
+		this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+	};
 
 	render() {
 		const sortedMessages =
@@ -66,6 +71,12 @@ class ChatContainer extends React.Component {
 				{this.props.selectedRoomId ? (
 					<MessageForm sendMessage={this.sendMessage} />
 				) : null}
+				{/* <div
+					style={{ float: "left", clear: "both" }}
+					ref={el => {
+						this.messagesEnd = el;
+					}}
+				></div> */}
 			</div>
 		);
 	}
