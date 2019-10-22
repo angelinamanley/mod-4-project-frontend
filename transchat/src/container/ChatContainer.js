@@ -17,18 +17,20 @@ class ChatContainer extends React.Component {
 			: null;
 	}
 
-	componentDidUpdate(prevProps) {
+	componentDidUpdate(prevProps, prevState) {
 		if (
 			this.props.selectedRoomId !== prevProps.selectedRoomId ||
 			this.props.time !== prevProps.time
 		) {
 			return this.props.selectedRoomId
-				? API.getMessages(this.props.selectedSessionId).then(messages =>
-						this.setState({ messages: messages }),
-				  )
+				? API.getMessages(this.props.selectedSessionId).then(messages => {
+						if (this.state.messages !== messages) {
+							this.setState({ messages: messages });
+							this.scrollToBottom();
+						}
+				  })
 				: this.setState({ messages: [] });
 		}
-		// this.scrollToBottom();
 	}
 
 	sendMessage = content => {
@@ -71,12 +73,12 @@ class ChatContainer extends React.Component {
 				{this.props.selectedRoomId ? (
 					<MessageForm sendMessage={this.sendMessage} />
 				) : null}
-				{/* <div
+				<div
 					style={{ float: "left", clear: "both" }}
 					ref={el => {
 						this.messagesEnd = el;
 					}}
-				></div> */}
+				></div>
 			</div>
 		);
 	}

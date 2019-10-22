@@ -1,13 +1,5 @@
 import React from "react";
-import {
-	Button,
-	Form,
-	Header,
-	Input,
-	Grid,
-	Image,
-	Segment,
-} from "semantic-ui-react";
+import { Button, Form, Input, Grid, Image, Segment } from "semantic-ui-react";
 
 class SignInContainer extends React.Component {
 	render() {
