@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "semantic-ui-react";
 
 class SignInContainer extends React.Component {
 	render() {
@@ -12,7 +13,7 @@ class SignInContainer extends React.Component {
 						placeholder="Username"
 						className="username-input"
 					/>
-					<button className="sign-in-button">START TRANSCHATTING!</button>
+					<Button>START TRANSCHATTING!</Button>
 				</form>
 			</div>
 		);
