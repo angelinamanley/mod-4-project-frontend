@@ -92,10 +92,21 @@
 .card {
     height: 15%;
     display: flex;
-    background-color: white;
     width: 100%;
     text-align: center;
     background-color: white;
+    border: thin;
+    border-style: solid;
+    border-color: lightgrey;
+    padding: 15px;
+}
+
+.card-mine {
+    height: 15%;
+    display: flex;
+    width: 100%;
+    text-align: center;
+    background-color: #e5f9e7;
     border: thin;
     border-style: solid;
     border-color: lightgrey;

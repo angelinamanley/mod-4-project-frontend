@@ -3,7 +3,7 @@ import { Button, Image, List } from "semantic-ui-react";
 
 const Card = props => {
 	return (
-		<div className="card">
+		<div className={props.selected ? "card-mine" : "card"}>
 			<div
 				className="card-username"
 				onClick={() => props.onCardClick(props.item)}
