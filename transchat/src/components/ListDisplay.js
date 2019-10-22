@@ -1,10 +1,11 @@
 import React from "react";
 import Card from "./Card";
+import { Button, Image, List } from "semantic-ui-react";
 
 class ListDisplay extends React.Component {
 	render() {
 		return (
-			<div className="list-display">
+			<List className="list-display">
 				{this.props.list.map(item => (
 					<Card
 						onCardClick={this.props.onCardClick}
@@ -14,7 +15,7 @@ class ListDisplay extends React.Component {
 						selected={this.props.selectedRoom === item.id}
 					/>
 				))}
-			</div>
+			</List>
 		);
 	}
 }
