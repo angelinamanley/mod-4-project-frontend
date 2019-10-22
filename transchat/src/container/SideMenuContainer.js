@@ -94,7 +94,9 @@ class SideMenuContainer extends React.Component {
 		);
 
 	deleteRoom = roomId => {
-		this.props.setSelectedSessionAndRoomIds("", "");
+		if (this.props.selectedRoom === roomId) {
+			this.props.setSelectedSessionAndRoomIds("", "");
+		}
 		this.setState({
 			roomsList: this.state.roomsList.filter(room => room.id !== roomId),
 		});

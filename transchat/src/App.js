@@ -9,6 +9,7 @@ import SignInContainer from "./container/SignInContainer";
 class App extends React.Component {
 	state = {
 		currentUserId: "",
+		currentUsername: "",
 		selectedRoomId: "",
 		selectedSessionId: "",
 		translation: true,
@@ -57,13 +58,26 @@ class App extends React.Component {
 		event.preventDefault();
 		if (event.target.username.value) {
 			API.postUser(event.target.username.value).then(user =>
-				this.setState({ currentUserId: user.id }),
+				this.setState({
+					currentUserId: user.id,
+					currentUsername: user.username,
+				}),
 			);
 		}
 	};
 
 	switchTranslation = () => {
 		this.setState({ translation: !this.state.translation });
+	};
+
+	signOut = () => {
+		this.setState({
+			currentUserId: "",
+			currentUsername: "",
+			selectedRoomId: "",
+			selectedSessionId: "",
+			translation: true,
+		});
 	};
 
 	render() {
@@ -74,7 +88,9 @@ class App extends React.Component {
 						<NavBar
 							changeUser={this.changeUser}
 							currentUserId={this.state.currentUserId}
+							currentUsername={this.state.currentUsername}
 							switchTranslation={this.switchTranslation}
+							signOut={this.signOut}
 						/>
 						<SideMenuContainer
 							currentUserId={this.state.currentUserId}

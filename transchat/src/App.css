@@ -9,67 +9,119 @@
     background-color: lightgrey;
 }
 
+.ui.menu:first-child {
+    margin: 0;
+}
+
 .side-menu-container {
     width: 25%;
     height: 90%;
-    background-color: lightpink;
+    background-color: white;
     float: left;
 }
 
 .chat-container {
     width: 75%;
-    height: 90%;
-    max-height: 80%;
-    background-color: lightskyblue;
+    height: 85%;
+    max-height: 75%;
+    background-color: white;
     float: right;
     overflow-y: auto;
+    padding: 10px;
+}
+
+.ui.list:last-child, ol.ui.list:last-child, ul.ui.list:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    margin: 0;
 }
 
 .add-room {
     height: 10%;
-    background-color: khaki;
+    background-color: whitesmoke;
+    border: thin;
+    border-style: solid;
+    border-color: lightgrey;
+    display: flex;
+}
+
+.add-room-header:first-child {
+    margin: auto;
 }
 
 .list-display{
     height: 90%;
     max-height: 90%;
-    background-color: lightgreen;
+    background-color: white;
     overflow-y: auto;
+    border: thin;
+    border-style: solid;
+    border-color: lightgrey;
 }
 
 .message-form-container {
     position: absolute;
     bottom: 0;
-    height: 10%;
+    left: 25%;
+    margin: 0;
+    height: 15%;
     width: 75%;
-    background-color: thistle;
+    background-color: whitesmoke;
+    border: thin;
+    border-style: solid;
+    border-color: lightgrey;
+}
+
+.message-form {
+    margin: 0;
+    height: 100%;
 }
 
 .message-display {
     float: left;
     width: 60%;
     margin: 10px;
-    background-color: lightsalmon;
 }
 
 .message-display-mine {
     float: right;
     width: 60%;
     margin: 10px;
-    background-color: lightpink;
 }
 
 .card {
+    height: 20%;
+    display: flex;
     background-color: white;
     width: 100%;
-    padding: 20px;
     text-align: center;
-    border: solid;
+    background-color: white;
+    border: thin;
+    border-style: solid;
+    border-color: lightgrey;
+    padding: 15px;
+}
+
+.card-username {
+    height: 100%;
+    margin: auto;
+}
+
+.card-delete-section {
+    margin: auto 0;
+    width: 25%;
+    height: 100%;
+    float: right;
+}
+
+.card-button{
+    height: 100%;
 }
 
 .input-area {
-    margin: 10px;
-    height: 90%;
+    margin: auto 5%;
+    margin-top: 2%;
+    height: 50%;
     width: 90%;
 }
 

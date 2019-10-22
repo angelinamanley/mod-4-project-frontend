@@ -1,4 +1,5 @@
 import React from "react";
+import { Input } from "semantic-ui-react";
 
 class MessageForm extends React.Component {
 	state = {
@@ -21,13 +22,17 @@ class MessageForm extends React.Component {
 		return (
 			<div className="message-form-container">
 				<form className="message-form" onSubmit={this.handleFormSubmission}>
-					<input
+					<Input
+						action={{
+							color: "green",
+							icon: "send",
+						}}
+						placeholder="Message..."
 						type="text"
 						className="input-area"
 						value={this.state.message}
 						onChange={this.handleChange}
 					/>
-					<button>SEND</button>
 				</form>
 			</div>
 		);
