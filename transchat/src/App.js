@@ -5,6 +5,7 @@ import ChatContainer from "./container/ChatContainer";
 import NavBar from "./components/NavBar";
 import API from "./adapter/API";
 import SignInContainer from "./container/SignInContainer";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
 class App extends React.Component {
 	state = {
@@ -81,35 +82,45 @@ class App extends React.Component {
 	};
 
 	render() {
+		const body = (
+			<>
+				<NavBar
+					changeUser={this.changeUser}
+					currentUserId={this.state.currentUserId}
+					currentUsername={this.state.currentUsername}
+					switchTranslation={this.switchTranslation}
+					signOut={this.signOut}
+				/>
+				<SideMenuContainer
+					currentUserId={this.state.currentUserId}
+					createNewRoomAndSessions={this.createNewRoomAndSessions}
+					setSelectedSessionAndRoomIds={this.setSelectedSessionAndRoomIds}
+					time={this.state.time}
+					selectedRoom={this.state.selectedRoomId}
+				/>
+				<ChatContainer
+					selectedSessionId={this.state.selectedSessionId}
+					selectedRoomId={this.state.selectedRoomId}
+					time={this.state.time}
+					translation={this.state.translation}
+				/>
+			</>
+		);
+
+		const signin = <SignInContainer signIn={this.signIn} />;
+
 		return (
-			<div className="app">
-				{this.state.currentUserId ? (
-					<>
-						<NavBar
-							changeUser={this.changeUser}
-							currentUserId={this.state.currentUserId}
-							currentUsername={this.state.currentUsername}
-							switchTranslation={this.switchTranslation}
-							signOut={this.signOut}
-						/>
-						<SideMenuContainer
-							currentUserId={this.state.currentUserId}
-							createNewRoomAndSessions={this.createNewRoomAndSessions}
-							setSelectedSessionAndRoomIds={this.setSelectedSessionAndRoomIds}
-							time={this.state.time}
-							selectedRoom={this.state.selectedRoomId}
-						/>
-						<ChatContainer
-							selectedSessionId={this.state.selectedSessionId}
-							selectedRoomId={this.state.selectedRoomId}
-							time={this.state.time}
-							translation={this.state.translation}
-						/>
-					</>
-				) : (
-					<SignInContainer signIn={this.signIn} />
-				)}
-			</div>
+			<Router>
+				<div className="app">
+					<Route exact path="/sign-in" render={() => signin} />
+					{this.state.currentUserId ? (
+						<Redirect to="/app" />
+					) : (
+						<Redirect to="/sign-in" />
+					)}
+					<Route exact path="/app" render={() => body} />
+				</div>
+			</Router>
 		);
 	}
 }

@@ -23,7 +23,8 @@ class NavBar extends React.Component {
 			<Menu className="nav-bar">
 				<Menu.Item>
 					<img
-						src="https://react.semantic-ui.com/logo.png"
+						src="/TClogo.png"
+						alt="logo"
 						onClick={this.props.switchTranslation}
 					/>
 				</Menu.Item>

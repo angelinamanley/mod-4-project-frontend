@@ -29,8 +29,9 @@ class SideMenuContainer extends React.Component {
 
 	componentDidUpdate(prevProps) {
 		if (
-			this.props.currentUserId !== prevProps.currentUserId ||
-			this.props.time !== prevProps.time
+			this.props.currentUserId !== "" &&
+			(this.props.currentUserId !== prevProps.currentUserId ||
+				this.props.time !== prevProps.time)
 		) {
 			API.getUsers()
 				.then(users =>
