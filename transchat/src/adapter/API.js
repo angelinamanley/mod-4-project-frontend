@@ -1,4 +1,5 @@
-const apiEndpoint = "http://localhost:3000/";
+// const apiEndpoint = "http://localhost:3000/";
+const apiEndpoint = "http://10.218.5.122:3000/";
 const usersURL = `${apiEndpoint}users/`;
 const messagesURL = `${apiEndpoint}messages/`;
 const sessionsURL = `${apiEndpoint}sessions/`;
