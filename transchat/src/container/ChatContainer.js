@@ -54,8 +54,10 @@ class ChatContainer extends React.Component {
 			this.props.translation && this.state.messages
 				? this.sortMessages(
 						this.state.messages.map(message => {
-							message.content = message.trans_messages[0].content;
-							return message;
+							if (message.trans_messages[0]) {
+								message.content = message.trans_messages[0].content;
+								return message;
+							}
 						}),
 				  )
 				: this.sortMessages(this.state.messages);
